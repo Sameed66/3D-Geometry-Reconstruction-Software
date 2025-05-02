@@ -26,7 +26,7 @@ Furthermore we have created the GUI for the dual camera stereo system having the
 3. After selecting the images, it will rectify the image pairs, and it will display the rectified images as a figure and the related results in the log.
 4. After this process you can choose to implement the Sparse or Dense approach.
 5. By clicking on the sparse button you will get the fundamental matrix, essential matrix, relative rotation matrix and translation matrix (R1,R2 & T). Results are shown in the log. 3D points are reprojected on the original image.
-6. Bt clicking on dense button, it will implement the SGBM algorithm on the stereo images and will displayt the depth map and 3d point cloud. 
+6. By clicking on dense button, it will implement the SGBM algorithm on the stereo images and will displayt the depth map and 3d point cloud. 
 
 
 
