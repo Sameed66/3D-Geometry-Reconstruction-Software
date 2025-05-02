@@ -123,24 +123,28 @@ def dense_3d_reconstruction(Q, output_ply_path="output.ply"):
     # Reproject to 3D
     points_3D = cv2.reprojectImageTo3D(filtered_disparity, Q)
 
-    # Create a valid mask
+# Create a valid mask (avoid NaNs, infinities, and zero disparity)
     mask = (filtered_disparity > 10) & np.isfinite(points_3D[:, :, 0])
 
-    # Extract valid 3D points and colors
+    # Extract valid 3D points
     points = points_3D[mask]
-    colors = left_img[mask]
+
+    # Extract corresponding colors from the left image
+    colors = left_img_color[mask]  # Extract RGB values
+
+    # Normalize colors (Open3D requires values in range [0,1])s
     colors = colors.astype(np.float32) / 255.0
 
-    # Create Open3D point cloud
+    ### **Step 3: Convert to Open3D and Save as PLY**
     pcd = o3d.geometry.PointCloud()
     pcd.points = o3d.utility.Vector3dVector(points)
-    pcd.colors = o3d.utility.Vector3dVector(colors)
+    pcd.colors = o3d.utility.Vector3dVector(colors)  # Assign colors to point cloud
 
-    # Save and visualize
-    o3d.io.write_point_cloud(output_ply_path, pcd)
+    # Save and visualize the 3D point cloud
+    o3d.io.write_point_cloud("output.ply", pcd)
     o3d.visualization.draw_geometries([pcd])
 
-    print(f"3D point cloud saved as {output_ply_path}")
+    print("3D point cloud saved as output.ply")
 
 
 
