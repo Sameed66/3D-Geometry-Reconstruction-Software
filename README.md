@@ -11,9 +11,15 @@ This project demonstrates a complete stereo vision pipeline using Python, OpenCV
 
 🚀 How to Run
 
-Step 1: Cone Repo
+Step 1: Clone Repo
 
-git clone https://github.com/Sameed66/3D-Geometry-Reconstruction-Software.git
+<pre lang="markdown"> ```bash git clone https://github.com/Sameed66/3D-Geometry-Reconstruction-Software.git ``` </pre>
+
+Step 2: Change Directory 
+
+cd 3D-Geometry-Reconstruction-Software
+
+
 
 
 
